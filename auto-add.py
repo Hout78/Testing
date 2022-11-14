@@ -65,17 +65,17 @@ def add_users_to_group():
         except:
             continue
 
-    print('Choose a group to add members:')
+    print('Choose a channal to add members:')
     i=0
-    for group in groups:
-        print(str(i) + '- ' + group.title)
+    for channal in channal:
+        print(str(i) + '- ' + channal.title)
         i+=1
 
     g_index = input("Enter a Number: ")
-    target_group=groups[int(g_index)]
-    print('\n\nChosen Group:\t' + groups[int(g_index)].title)
+    target_channal=channals[int(g_index)]
+    print('\n\nChosen Group:\t' + channals[int(g_index)].title)
 
-    target_group_entity = InputPeerChannel(target_group.id,target_group.access_hash)
+    target_group_entity = InputPeerChannel(target_channal.id,target_channal.access_hash)
 
     mode = int(input("Enter 1 to add by username or 2 to add by ID: "))
 
@@ -93,8 +93,8 @@ def add_users_to_group():
             else:
                 sys.exit("Invalid Mode Selected. Please Try Again.")
             client(InviteToChannelRequest(target_group_entity,[user_to_add]))
-            print("Waiting 60 Seconds...")
-            time.sleep(60)
+            print("Waiting 20 Seconds...")
+            time.sleep(20)
         except PeerFloodError:
             print("Getting Flood Error from Telegram. You should stop script now.Please try again after some time.")
         except UserPrivacyRestrictedError:
